@@ -6,5 +6,7 @@ Shift       : D
 Shift Baru  : D
 
 # Screenshot
-<tugas4/photos/image.png>
-<tugas4/photos/Screenshot 2024-10-02 104151.png>
+<div style="display: flex; justify-content: space-between;">
+  <img src="tugas4/photos/image.png" width="19%">
+  <img src="tugas4/photos/Screenshot 2024-10-02 104151.png" width="19%">
+</div>
