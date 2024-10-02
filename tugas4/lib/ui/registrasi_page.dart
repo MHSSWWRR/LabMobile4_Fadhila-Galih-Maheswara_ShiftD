@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RegistrasiPage extends StatefulWidget {
-  const RegistrasiPage({Key? key}) : super(key: key);
+  const RegistrasiPage({super.key});
 
   @override
   _RegistrasiPageState createState() => _RegistrasiPageState();
@@ -9,7 +9,7 @@ class RegistrasiPage extends StatefulWidget {
 
 class _RegistrasiPageState extends State<RegistrasiPage> {
   final _formKey = GlobalKey<FormState>();
-  bool _isLoading = false;
+  final bool _isLoading = false;
 
   final _namaTextboxController = TextEditingController();
   final _emailTextboxController = TextEditingController();

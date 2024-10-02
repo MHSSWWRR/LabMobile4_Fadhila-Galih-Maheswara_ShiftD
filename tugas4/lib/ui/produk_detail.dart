@@ -5,7 +5,7 @@ import 'package:tugas4/ui/produk_form.dart';
 class ProdukDetail extends StatefulWidget {
   Produk? produk;
 
-  ProdukDetail({Key? key, this.produk}) : super(key: key);
+  ProdukDetail({super.key, this.produk});
 
   @override
   _ProdukDetailState createState() => _ProdukDetailState();

@@ -4,7 +4,7 @@ import 'package:tugas4/ui/produk_detail.dart';
 import 'package:tugas4/ui/produk_form.dart';
 
 class ProdukPage extends StatefulWidget {
-  const ProdukPage({Key? key}) : super(key: key);
+  const ProdukPage({super.key});
 
   @override
   _ProdukPageState createState() => _ProdukPageState();
@@ -67,7 +67,7 @@ class _ProdukPageState extends State<ProdukPage> {
 class ItemProduk extends StatelessWidget {
   final Produk produk;
 
-  const ItemProduk({Key? key, required this.produk}) : super(key: key);
+  const ItemProduk({super.key, required this.produk});
 
   @override
   Widget build(BuildContext context) {

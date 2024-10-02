@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tugas4/ui/registrasi_page.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -10,7 +10,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-  bool _isLoading = false;
+  final bool _isLoading = false;
 
   final _emailTextboxController = TextEditingController();
   final _passwordTextboxController = TextEditingController();

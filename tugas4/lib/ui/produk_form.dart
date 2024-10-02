@@ -4,7 +4,7 @@ import 'package:tugas4/model/produk.dart';
 class ProdukForm extends StatefulWidget {
   Produk? produk;
 
-  ProdukForm({Key? key, this.produk}) : super(key: key);
+  ProdukForm({super.key, this.produk});
 
   @override
   _ProdukFormState createState() => _ProdukFormState();
@@ -12,7 +12,7 @@ class ProdukForm extends StatefulWidget {
 
 class _ProdukFormState extends State<ProdukForm> {
   final _formKey = GlobalKey<FormState>();
-  bool _isLoading = false;
+  final bool _isLoading = false;
   String judul = "Tambah Produk Maheswara";
   String tombolSubmit = "SIMPAN";
 
