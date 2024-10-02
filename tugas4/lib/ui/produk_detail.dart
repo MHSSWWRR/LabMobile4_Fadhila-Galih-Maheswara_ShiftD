@@ -16,7 +16,7 @@ class _ProdukDetailState extends State<ProdukDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Detail Produk Abhirama'),
+        title: const Text('Detail Produk Maheswara'),
       ),
       body: Center(
         child: Column(
@@ -52,12 +52,9 @@ class _ProdukDetailState extends State<ProdukDetail> {
                   context,
                   MaterialPageRoute(
                       builder: (context) => ProdukForm(
-                        produk: widget.produk!,
-                      )
-                  )
-              );
-            }
-        ),
+                            produk: widget.produk!,
+                          )));
+            }),
         //Tombol Hapus
         OutlinedButton(
           child: const Text("DELETE"),

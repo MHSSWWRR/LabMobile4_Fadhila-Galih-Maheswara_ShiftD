@@ -15,7 +15,7 @@ class _ProdukPageState extends State<ProdukPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('List Produk Abhirama'),
+          title: const Text('List Produk Maheswara'),
           actions: [
             Padding(
                 padding: const EdgeInsets.only(right: 20.0),
@@ -25,8 +25,7 @@ class _ProdukPageState extends State<ProdukPage> {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => ProdukForm()));
                   },
-                )
-            )
+                ))
           ],
         ),
         drawer: Drawer(
@@ -47,28 +46,21 @@ class _ProdukPageState extends State<ProdukPage> {
                     id: 1,
                     kodeProduk: 'A001',
                     namaProduk: 'Kamera',
-                    hargaProduk: 5000000
-                )
-            ),
+                    hargaProduk: 5000000)),
             ItemProduk(
                 produk: Produk(
                     id: 2,
                     kodeProduk: 'A002',
                     namaProduk: 'Kulkas',
-                    hargaProduk: 2500000
-                )
-            ),
+                    hargaProduk: 2500000)),
             ItemProduk(
                 produk: Produk(
                     id: 3,
                     kodeProduk: 'A003',
                     namaProduk: 'Mesin Cuci',
-                    hargaProduk: 2000000
-                )
-            ),
+                    hargaProduk: 2000000)),
           ],
-        )
-    );
+        ));
   }
 }
 
@@ -85,10 +77,8 @@ class ItemProduk extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (context) => ProdukDetail(
-                  produk: produk,
-                )
-            )
-        );
+                      produk: produk,
+                    )));
       },
       child: Card(
         child: ListTile(
