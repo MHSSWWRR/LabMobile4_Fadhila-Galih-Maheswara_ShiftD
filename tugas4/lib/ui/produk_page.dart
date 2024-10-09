@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:tugas4/bloc/logout_bloc.dart';
+import 'package:tugas4/bloc/produk_bloc.dart';
 import 'package:tugas4/model/produk.dart';
+import 'package:tugas4/ui/login_page.dart';
 import 'package:tugas4/ui/produk_detail.dart';
 import 'package:tugas4/ui/produk_form.dart';
 
 class ProdukPage extends StatefulWidget {
-  const ProdukPage({super.key});
+  const ProdukPage({Key? key}) : super(key: key);
 
   @override
   _ProdukPageState createState() => _ProdukPageState();
@@ -14,71 +17,88 @@ class _ProdukPageState extends State<ProdukPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('List Produk Maheswara'),
-          actions: [
-            Padding(
-                padding: const EdgeInsets.only(right: 20.0),
-                child: GestureDetector(
-                  child: const Icon(Icons.add, size: 26.0),
-                  onTap: () async {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => ProdukForm()));
-                  },
-                ))
-          ],
-        ),
-        drawer: Drawer(
-          child: ListView(
-            children: [
-              ListTile(
-                title: const Text('Logout'),
-                trailing: const Icon(Icons.logout),
-                onTap: () async {},
-              )
-            ],
-          ),
-        ),
-        body: ListView(
+      appBar: AppBar(
+        title: const Text('List Produk'),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: GestureDetector(
+              child: const Icon(Icons.add, size: 26.0),
+              onTap: () async {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ProdukForm()));
+              },
+            ),
+          )
+        ],
+      ),
+      drawer: Drawer(
+        child: ListView(
           children: [
-            ItemProduk(
-                produk: Produk(
-                    id: 1,
-                    kodeProduk: 'A001',
-                    namaProduk: 'Kamera',
-                    hargaProduk: 5000000)),
-            ItemProduk(
-                produk: Produk(
-                    id: 2,
-                    kodeProduk: 'A002',
-                    namaProduk: 'Kulkas',
-                    hargaProduk: 2500000)),
-            ItemProduk(
-                produk: Produk(
-                    id: 3,
-                    kodeProduk: 'A003',
-                    namaProduk: 'Mesin Cuci',
-                    hargaProduk: 2000000)),
+            ListTile(
+              title: const Text('Logout'),
+              trailing: const Icon(Icons.logout),
+              onTap: () async {
+                await LogoutBloc.logout().then((value) => {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => LoginPage()))
+                    });
+              },
+            )
           ],
-        ));
+        ),
+      ),
+      body: FutureBuilder<List>(
+        future: ProdukBloc.getProduks(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) print(snapshot.error);
+          return snapshot.hasData
+              ? ListProduk(
+                  list: snapshot.data,
+                )
+              : const Center(
+                  child: CircularProgressIndicator(),
+                );
+        },
+      ),
+    );
+  }
+}
+
+class ListProduk extends StatelessWidget {
+  final List? list;
+
+  const ListProduk({Key? key, this.list}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemCount: list == null ? 0 : list!.length,
+        itemBuilder: (context, i) {
+          return ItemProduk(
+            produk: list![i],
+          );
+        });
   }
 }
 
 class ItemProduk extends StatelessWidget {
   final Produk produk;
 
-  const ItemProduk({super.key, required this.produk});
+  const ItemProduk({Key? key, required this.produk}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => ProdukDetail(
-                      produk: produk,
-                    )));
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProdukDetail(
+              produk: produk,
+            ),
+          ),
+        );
       },
       child: Card(
         child: ListTile(
